@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="person-summary">
+  <style>
+    :host {
+      display: block;
+      overflow: auto;
+      zoom: 1;
+    }
+
+    img {
+      border-radius: 50%;
+      float: left;
+      margin-right: 15px;
+      max-width: 50px;
+    }
+
+    span {
+      display: block;
+    }
+
+    span.name {
+      font-weight: bold;
+    }
+  </style>
+  <template>
+    <img src="{{gravatar(email)}}" />
+    <span class="name">{{name}}</span>
+    <span class="updated">{{updated}}</span>
+  </template>
+  <script>
+  (function() {
+    Polymer({
+      is: 'person-summary',
+      gravatar: function(v) {
+        return "http://www.gravatar.com/avatar/" + md5(v);
+      },
+      properties: {
+        name: String,
+        email: String,
+        updated: String
+      }
+    });
+  })();
+  </script>
+</dom-module>
