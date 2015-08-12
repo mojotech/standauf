@@ -1,20 +1,28 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared/person-summary.html">
 
 <dom-module id="people-pane">
   <style>
     :host {
+      background-color: #f9f9f9;
       display: block;
     }
   </style>
   <template>
-    <div> people pane! </div>
+    <template is="dom-repeat" items="{{people}}" as="person">
+    <person-summary name="{{person.name}}" email="{{person.email}}" updated="{{person.updated}}"></person-summary>
+    </template>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'people-pane',
-
-      properties: {
+      ready: function() {
+        this.people = [
+          {name: "Jeff Lupinski", email: "iam@jefflupinski.com", updated: "3 hours ago"},
+          {name: "Seth Krasnianski", email: "seth@mojotech.com", updated: "4 hours ago"},
+          {name: "Sam Saccone", email: "sam@samx.it", updated: "5 hours ago"}
+        ];
       }
     });
   })();
