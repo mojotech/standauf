@@ -15,11 +15,23 @@
   (function() {
     Polymer({
       is: 'standup-panel',
-      getActiveProjectPeople: function(projects) {
+      getActiveProject: function(projects) {
         return projects.filter(function(project) {
           return project.active === true;
-        })[0].staff;
+        })[0];
       },
+      getActiveProjectPeople: function(projects) {
+        return this.getActiveProject(projects).staff;
+      },
+      onProjectChange: function(projects) {
+        //hack so we do not call page before it is readyyy
+        if (app.__ready) {
+          page('/projects/' + this.getActiveProject(projects).id)
+        }
+      },
+      observers: [
+        'onProjectChange(projects)'
+      ],
       properties: {
         activeProjectPeople: {
           type: Array,
