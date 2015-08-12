@@ -5,15 +5,37 @@
     :host {
       display: block;
     }
+    li {
+      cursor: pointer;
+    }
   </style>
   <template>
+    <ul>
+      <template is="dom-repeat" items="{{projects}}">
+      <li on-click="activateProject">
+        <b>{{item.name}}</b>
+      </li>
+      </template>
+    </ul>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'project-pane',
-
+      activateProject: function(e) {
+        this.projects = this.projects.map(function(p) {
+          p.active = (p.id === e.model.item.id);
+          return p;
+        });
+      },
       properties: {
+        projects: {
+          type: Array,
+          notify: true,
+          value: function() {
+            return [];
+          }
+        }
       }
     });
   })();

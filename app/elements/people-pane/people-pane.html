@@ -17,12 +17,13 @@
   (function() {
     Polymer({
       is: 'people-pane',
-      ready: function() {
-        this.people = [
-          {name: "Jeff Lupinski", email: "iam@jefflupinski.com", updated: "3 hours ago"},
-          {name: "Seth Krasnianski", email: "seth@mojotech.com", updated: "4 hours ago"},
-          {name: "Sam Saccone", email: "sam@samx.it", updated: "5 hours ago"}
-        ];
+      properties: {
+        people: {
+          type: Array,
+          value: function() {
+            return [];
+          }
+        }
       }
     });
   })();
