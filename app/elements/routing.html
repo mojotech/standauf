@@ -5,6 +5,10 @@
       app.route = 'home';
     });
 
+    page('/users/login', function(ctx) {
+      app.route = 'login';
+    });
+
     page('/projects/:project_id', function(ctx) {
       app.route = 'home';
     });
