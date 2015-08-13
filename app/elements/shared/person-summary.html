@@ -16,13 +16,19 @@
       border-top: none;
     }
 
-    :host:nth-child(2) {
+    :host:nth-child(2), :host:hover {
       /* emulate selected */
       background: white;
       border-left-color: #2ebaee;
       border-left-style: solid;
       border-left-width: 4px;
       border-right: none;
+      cursor: pointer;
+    }
+
+    :host:nth-child(2) *, :host:hover * {
+      left: -4px;
+      position: relative;
     }
 
     img {
