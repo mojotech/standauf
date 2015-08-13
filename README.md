@@ -1,5 +1,11 @@
 ![](https://d13yacurqjgara.cloudfront.net/users/111934/screenshots/2192403/attachments/404994/attachment.png)
 
+### One time setup
+
+```sh
+bower i && npm i
+```
+
 ### Development workflow
 
 #### Serve / watch
