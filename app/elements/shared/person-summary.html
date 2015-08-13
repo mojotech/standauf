@@ -3,9 +3,26 @@
 <dom-module id="person-summary">
   <style>
     :host {
+      border: 1px solid #e0e0e0;
+      border-left: none;
+      border-top: none;
       display: block;
       overflow: auto;
+      padding: 20px;
       zoom: 1;
+    }
+
+    :host:first-child {
+      border-top: none;
+    }
+
+    :host:nth-child(2) {
+      /* emulate selected */
+      background: white;
+      border-left-color: #2ebaee;
+      border-left-style: solid;
+      border-left-width: 4px;
+      border-right: none;
     }
 
     img {
@@ -20,12 +37,28 @@
     }
 
     span.name {
-      font-weight: bold;
+      font-weight: 500;
+    }
+
+    span.updated {
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    i {
+      background-color: #5dd08b;
+      border-radius: 50%;
+      float: left;
+      height: 9px;
+      margin-right: 10px;
+      margin-top: 5px;
+      width: 9px;
     }
   </style>
   <template>
     <img src="{{gravatar(email)}}" />
     <span class="name">{{name}}</span>
+    <i class="temperature"></i>
     <span class="updated">{{updated}}</span>
   </template>
   <script>
