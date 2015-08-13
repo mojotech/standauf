@@ -4,3 +4,7 @@ body {
   font-style: normal;
   color: #212121;
 }
+
+body > .content, iron-pages, iron-pages > section {
+  height: 100%;
+}
