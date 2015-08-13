@@ -1,3 +1,5 @@
+![](https://d13yacurqjgara.cloudfront.net/users/111934/screenshots/2192403/attachments/404994/attachment.png)
+
 ### Development workflow
 
 #### Serve / watch
