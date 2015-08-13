@@ -15,7 +15,7 @@
     <ul>
       <template is="dom-repeat" items="{{projects}}">
       <li on-click="activateProject">
-        <b>{{item.name}}</b>
+        <b>[[item.name]]</b>
       </li>
       </template>
     </ul>
@@ -25,18 +25,16 @@
     Polymer({
       is: 'project-pane',
       activateProject: function(e) {
+        var id = e.model.item.id;
         this.projects = this.projects.map(function(p) {
-          p.active = (p.id === e.model.item.id);
+          p.active = (p.id === id);
           return p;
         });
       },
       properties: {
         projects: {
           type: Array,
-          notify: true,
-          value: function() {
-            return [];
-          }
+          notify: true
         }
       }
     });

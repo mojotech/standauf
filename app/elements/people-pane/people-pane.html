@@ -11,8 +11,8 @@
     }
   </style>
   <template>
-    <template is="dom-repeat" items="{{people}}" as="person">
-    <person-summary name="{{person.name}}" email="{{person.email}}" updated="{{person.updated}}"></person-summary>
+    <template is="dom-repeat" items="[[activeProjectPeople]]" as="person">
+    <person-summary name="[[person.name]]" email="[[person.email]]" updated="[[person.updated]]"></person-summary>
     </template>
   </template>
   <script>
@@ -20,11 +20,8 @@
     Polymer({
       is: 'people-pane',
       properties: {
-        people: {
+        activeProjectPeople: {
           type: Array,
-          value: function() {
-            return [];
-          }
         }
       }
     });
