@@ -23,7 +23,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer({
       is: 'project-list',
       ready: function() {
-        this.projects = [{name: 'project 1',
+        this.projects = [{
+          name: 'project 1',
           id: '000001',
           staff: [{
             name: 'tom jones',
@@ -33,22 +34,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           {
             name: 'bob jones',
             email: 'seth@mojotech.com',
-              updated: "3 hours ago"
+            updated: "3 hours ago"
           },
           {
             name: 'joe jones',
             email: 'iam@jefflupinski.com',
-              updated: "4 hours ago"
+            updated: "4 hours ago"
           }]
         },
-        {name: 'project 2',
+        {
+          name: 'project 2',
           id: '000002',
           staff: [{
             name: 'bob jones',
             email: 'seth@mojotech.com'
           }]
         },
-        {name: 'project 3',
+        {
+          name: 'project 3',
           id: '000003',
           active: true,
           staff: [{
