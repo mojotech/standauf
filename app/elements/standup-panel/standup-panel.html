@@ -18,10 +18,7 @@
     Polymer({
       is: 'standup-panel',
       onProjectChange: function(projects) {
-        //hack so we do not call page before it is readyyy
-        if (app.__ready) {
-          page('/projects/' + this.getActiveProject(projects).id);
-        }
+        page('/projects/' + this.getActiveProject(projects).id);
       },
       getActiveProject: function(projects) {
         return projects.filter(function(project) {

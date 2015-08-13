@@ -1,6 +1,6 @@
 <script src="../../bower_components/page/page.js"></script>
 <script>
-  window.addEventListener('WebComponentsReady', function() {
+  window.addEventListener('DOMContentLoaded', function() {
     page('/', function() {
       app.route = 'home';
     });
@@ -16,8 +16,5 @@
     page({
       hashbang: true
     });
-
-    // hack... has to be a better way
-    app.__ready = true;
   });
 </script>
