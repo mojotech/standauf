@@ -13,13 +13,16 @@
   </style>
   <template>
     <template is="dom-repeat" items="[[activeProjectPeople]]" as="person">
-      <person-summary person="[[person]]"></person-summary>
+      <person-summary on-click="activatePerson" person="[[person]]"></person-summary>
     </template>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'people-pane',
+      activatePerson: function(e) {
+        page('/projects/' + app.params.project_id + '/people/' + e.model.person.id);
+      },
       properties: {
         activeProjectPeople: {
           type: Array,
