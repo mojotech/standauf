@@ -241,8 +241,9 @@ gulp.task('default', ['clean'], function(cb) {
     'elements',
     ['jshint', 'images', 'fonts', 'html'],
     'vulcanize',
-    cb);
-    // Note: add , 'precache' , after 'vulcanize', if your are going to use Service Worker
+    cb
+  );
+  // Note: add , 'precache' , after 'vulcanize', if your are going to use Service Worker
 });
 
 // Load tasks for web-component-tester
