@@ -64,7 +64,7 @@
 
     <ul class="team">
       <li>Team Members</li>
-      <template is="dom-repeat" items="{{members(projects)}}">
+      <template is="dom-repeat" items="{{activePeople}}">
         <li>[[item.name]]</li>
       </template>
     </ul>
@@ -80,20 +80,26 @@
           return p;
         });
       },
+      activeProjectMembers: function(projects) {
+        if(_.keys(app.params).length === 0) {
+          return [];
+        }
+
+        return projects.filter(function(p) {
+          return p.id == app.params.project_id
+        })[0].staff;
+      },
       isActive: function(active) {
         return (active ? 'active' : '');
-      },
-      members: function(projects) {
-        if(_.keys(app.params).length) {
-          return projects.filter(function(p) {
-            return p.id == app.params.project_id
-          })[0].staff;
-        }
       },
       properties: {
         projects: {
           type: Array,
           notify: true
+        },
+        activePeople: {
+          type: Array,
+          computed: 'activeProjectMembers(projects)'
         }
       }
     });
