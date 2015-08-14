@@ -19,7 +19,7 @@
     Polymer({
       is: 'standup-panel',
       onProjectChange: function(projects) {
-        page('/projects/' + this.getActiveProject(projects).id);
+        page.redirect('/projects/' + this.getActiveProject(projects).slug);
       },
       getActiveProject: function(projects) {
         return projects.filter(function(project) {

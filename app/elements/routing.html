@@ -1,28 +1,30 @@
 <script src="../../bower_components/page/page.js"></script>
 <script>
-  window.addEventListener('DOMContentLoaded', function() {
-    page('/', function(ctx) {
+  window.addEventListener('WebComponentsReady', function() {
+    page('/', function(ctx, next) {
       app.route = 'home';
       app.params = ctx.params;
+      next();
     });
 
-    page('/login', function(ctx) {
+    page('/login', function(ctx, next) {
       app.route = 'login';
       app.params = ctx.params;
+      next();
     });
 
-    page('/projects/:project_id', function(ctx) {
-      app.route = 'home';
+    page('/projects/:project-name', function(ctx, next) {
+      app.route = 'project';
       app.params = ctx.params;
+      next();
     });
 
-    page('/projects/:project_id/people/:person_id', function(ctx) {
-      app.route = 'home';
+    page('/projects/:project-name/people/:person-name', function(ctx, next) {
+      app.route = 'person';
       app.params = ctx.params;
+      next();
     });
 
-    page({
-      hashbang: true
-    });
+    page.start();
   });
 </script>
