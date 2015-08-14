@@ -54,7 +54,7 @@
     <ul>
       <li>Projects</li>
       <template is="dom-repeat" items="{{projects}}">
-      <li on-click="activateProject" class$="{{isActive(item.active)}}">[[item.name]]</li>
+        <li on-click="activateProject" class$="{{isActive(item.active)}}">[[item.name]]</li>
       </template>
     </ul>
   </template>
