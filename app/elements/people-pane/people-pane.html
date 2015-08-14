@@ -14,7 +14,7 @@
   </style>
   <template>
     <template is="dom-repeat" items="[[activeProjectPeople]]" as="person">
-      <person-summary class$="{{isActivePerson(index, activePerson)}}" on-click="activatePerson" person="[[person]]"></person-summary>
+      <person-summary class$="{{isActivePerson(index, panelState.activePerson)}}" on-click="activatePerson" person="[[person]]"></person-summary>
     </template>
   </template>
   <script>
@@ -26,24 +26,17 @@
       },
       activatePerson: function(e) {
         page('/projects/' + app.params.project_id + '/people/' + e.model.person.id);
-        this.notifyPath('activePerson', this.getActivePerson(this.activeProjectPeople));
-      },
-      getActivePerson: function(people) {
-        if (_.keys(app.params).length) {
-          var i = people.map(function(p) {
-            return p.id;
-          }).indexOf(app.params.person_id);
-        }
 
-        return i !== -1 ? i : 0;
+        this.panelState.activePerson = e.model.index;
+        this.notifyPath('panelState.activePerson', this.panelState.activePerson);
       },
       properties: {
         activeProjectPeople: {
           type: Array,
         },
-        activePerson: {
-          type: Number,
-          computed: 'getActivePerson(activeProjectPeople)'
+        panelState: {
+          type: Object,
+          notify: true
         }
       }
     });
