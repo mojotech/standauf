@@ -25,16 +25,15 @@
         return idx === activeIndex ? 'active' : '';
       },
       activatePerson: function(e) {
-        page('/projects/' + app.params.project_id + '/people/' + e.model.person.id);
+        page.redirect('/projects/' + app.params['project-name'] + '/people/' + e.model.person.slug);
         this.notifyPath('activePerson', this.getActivePerson(this.activeProjectPeople));
       },
       getActivePerson: function(people) {
         if (_.keys(app.params).length) {
           var i = people.map(function(p) {
             return p.id;
-          }).indexOf(app.params.person_id);
+          }).indexOf(app.params['person-name']);
         }
-
         return i !== -1 ? i : 0;
       },
       properties: {
