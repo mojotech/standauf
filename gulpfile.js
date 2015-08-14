@@ -124,7 +124,8 @@ gulp.task('html', function() {
 
   return gulp.src(['app/**/*.html', '!app/{elements,test}/**/*.html'])
     // Replace path for vulcanized assets
-    .pipe($.if('*.html', $.replace('elements/elements.html', 'elements/elements.vulcanized.html')))
+    .pipe($.if('*.html', $.replace('elements/elements.html',
+                                   'elements/elements.vulcanized.html')))
     .pipe(assets)
     // Concatenate And Minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
@@ -167,7 +168,8 @@ gulp.task('precache', function(callback) {
     if (error) {
       callback(error);
     } else {
-      files.push('index.html', './', 'bower_components/webcomponentsjs/webcomponents-lite.min.js');
+      files.push('index.html', './',
+                 'bower_components/webcomponentsjs/webcomponents-lite.min.js');
       var filePath = path.join(dir, 'precache.json');
       fs.writeFile(filePath, JSON.stringify(files), callback);
     }
