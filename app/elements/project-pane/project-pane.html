@@ -54,7 +54,6 @@
   </style>
   <template>
     <compose-standup></compose-standup>
-
     <ul class="projects">
       <li>Projects</li>
       <template is="dom-repeat" items="{{projects}}">
@@ -73,33 +72,29 @@
   (function() {
     Polymer({
       is: 'project-pane',
-      activateProject: function(e) {
-        var id = e.model.item.id;
-        this.projects = this.projects.map(function(p) {
-          p.active = (p.id === id);
-          return p;
-        });
-      },
-      activeProjectMembers: function(projects) {
-        if(_.keys(app.params).length === 0) {
-          return [];
-        }
-
-        return projects.filter(function(p) {
-          return p.id == app.params.project_id
-        })[0].staff;
+      activeProjectMembers: function(projects, activeProject) {
+        return projects[activeProject].staff;
       },
       isActive: function(active) {
         return (active ? 'active' : '');
       },
+      activateProject: function(e) {
+        var id = e.model.item.id;
+        this.panelState.activeProject = e.model.index;
+        this.notifyPath('panelState.activeProject', this.panelState.activeProject);
+        page('/projects/' + id);
+      },
       properties: {
+        panelState: {
+          type: Object,
+          notify: true
+        },
         projects: {
           type: Array,
-          notify: true
         },
         activePeople: {
           type: Array,
-          computed: 'activeProjectMembers(projects)'
+          computed: 'activeProjectMembers(projects, panelState.activeProject)'
         }
       }
     });

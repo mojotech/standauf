@@ -10,33 +10,30 @@
     }
   </style>
   <template>
-    <project-pane projects="{{projects}}"></project-pane>
-    <people-pane active-project-people="[[activeProjectPeople]]"></people-pane>
+    <project-pane projects="{{projects}}" panel-state="{{panelState}}"></project-pane>
+    <people-pane panel-state="{{panelState}}" active-project-people="{{activeProjectPeople}}"></people-pane>
     <editor-pane></editor-pane>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'standup-panel',
-      onProjectChange: function(projects) {
-        page('/projects/' + this.getActiveProject(projects).id);
-      },
-      getActiveProject: function(projects) {
-        return projects.filter(function(project) {
-          return project.active === true;
-        })[0]
-      },
-      getActiveProjectPeople: function(projects) {
-        return this.getActiveProject(projects).staff;
+      getActiveProjectPeople: function(projects, activeProject) {
+        return projects[activeProject].staff;
       },
       properties: {
         activeProjectPeople: {
           type: Array,
-          computed: 'getActiveProjectPeople(projects)'
+          computed: 'getActiveProjectPeople(projects, panelState.activeProject)'
         },
-        projects: {
-          type: Array,
-          observer: 'onProjectChange'
+        panelState: {
+          type: Object,
+          value: function() {
+            return {
+              activeProject: 0,
+              activePerson: 0
+            }
+          }
         }
       }
     });
