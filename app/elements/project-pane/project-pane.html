@@ -11,6 +11,10 @@
       width: 25%;
     }
 
+    ul.projects {
+      margin-bottom: 50px;
+    }
+
     li {
       color: white;
       cursor: pointer;
@@ -51,10 +55,17 @@
   <template>
     <compose-standup></compose-standup>
 
-    <ul>
+    <ul class="projects">
       <li>Projects</li>
       <template is="dom-repeat" items="{{projects}}">
         <li on-click="activateProject" class$="{{isActive(item.active)}}">[[item.name]]</li>
+      </template>
+    </ul>
+
+    <ul class="team">
+      <li>Team Members</li>
+      <template is="dom-repeat" items="{{members(projects)}}">
+        <li>[[item.name]]</li>
       </template>
     </ul>
   </template>
@@ -71,6 +82,9 @@
       },
       isActive: function(active) {
         return (active ? 'active' : '');
+      },
+      members: function(projects) {
+        return projects.filter(function(p) {return p.id == app.params.project_id})[0].staff;
       },
       properties: {
         projects: {
