@@ -84,7 +84,11 @@
         return (active ? 'active' : '');
       },
       members: function(projects) {
-        return projects.filter(function(p) {return p.id == app.params.project_id})[0].staff;
+        if(_.keys(app.params).length) {
+          return projects.filter(function(p) {
+            return p.id == app.params.project_id
+          })[0].staff;
+        }
       },
       properties: {
         projects: {

@@ -29,7 +29,11 @@
         this.notifyPath('activePerson', this.getActivePerson(this.activeProjectPeople));
       },
       getActivePerson: function(people) {
-        var i = people.map(function(p) { return p.id; }).indexOf(app.params.person_id);
+        if (_.keys(app.params).length) {
+          var i = people.map(function(p) {
+            return p.id;
+          }).indexOf(app.params.person_id);
+        }
 
         return i !== -1 ? i : 0;
       },
