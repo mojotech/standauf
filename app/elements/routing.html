@@ -1,12 +1,14 @@
 <script src="../../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('DOMContentLoaded', function() {
-    page('/', function() {
+    page('/', function(ctx) {
       app.route = 'home';
+      app.params = ctx.params;
     });
 
     page('/users/login', function(ctx) {
       app.route = 'login';
+      app.params = ctx.params;
     });
 
     page('/projects/:project_id', function(ctx) {
