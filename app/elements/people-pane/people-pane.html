@@ -13,7 +13,7 @@
   </style>
   <template>
     <template is="dom-repeat" items="[[activeProjectPeople]]" as="person">
-    <person-summary name="[[person.name]]" email="[[person.email]]" updated="[[person.updated]]"></person-summary>
+      <person-summary person="[[person]]"></person-summary>
     </template>
   </template>
   <script>

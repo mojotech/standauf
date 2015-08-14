@@ -62,10 +62,10 @@
     }
   </style>
   <template>
-    <img src="{{gravatar(email)}}" />
-    <span class="name">{{name}}</span>
+    <img src="{{gravatar(person.email)}}" />
+    <span class="name">{{person.name}}</span>
     <i class="temperature"></i>
-    <span class="updated">{{updated}}</span>
+    <span class="updated">{{person.updated}}</span>
   </template>
   <script>
   (function() {
@@ -75,9 +75,7 @@
         return 'http://www.gravatar.com/avatar/' + md5(v);
       },
       properties: {
-        name: String,
-        email: String,
-        updated: String
+        person: Object
       }
     });
   })();
