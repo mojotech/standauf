@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="user-icon">
+  <style>
+    :host {
+      position: relative;
+    }
+
+    img, i {
+      border-radius: 50%;
+    }
+
+    img {
+      max-width: 30px;
+    }
+
+    i {
+      background-color: #f94a44;
+      bottom: 5px;
+      color: white;
+      font-size: 9px;
+      font-style: normal;
+      height: 14px;
+      position: absolute;
+      right: -7px;
+      text-align: center;
+      width: 14px;
+    }
+  </style>
+  <template>
+    <img src="http://www.gravatar.com/avatar/11b7736962708a7386f6ce56f59bec87" alt="">
+    <i class="notifications">3</i>
+  </template>
+  <script>
+  (function() {
+    Polymer({
+      is: 'user-icon'
+    });
+  })();
+  </script>
+</dom-module>

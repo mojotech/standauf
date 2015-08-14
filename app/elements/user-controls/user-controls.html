@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="user-icon.html">
+
+<dom-module id="user-controls">
+  <style>
+    :host {
+      display: block;
+      margin-top: -15px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+    }
+
+    a, span {
+      color: #aeb1d4;
+    }
+
+    span {
+      font-size: 12px;
+      margin: 0 15px;
+      position: relative;
+      top: -13px;
+    }
+
+    nav {
+      float: right;
+      margin-left: 10px;
+      margin-right: 50px;
+    }
+
+    nav a {
+      display: inline-block;
+        margin: 0 5px;
+    }
+
+  </style>
+  <template>
+    <user-icon></user-icon>
+    <span>Hello, Jeff</span>
+
+    <nav>
+      <a class="fa fa-cog settings"></a>
+      <a class="fa fa-sign-out log-out"></a>
+    </nav>
+  </template>
+  <script>
+  (function() {
+    Polymer({
+      is: 'user-controls'
+    });
+  })();
+  </script>
+</dom-module>

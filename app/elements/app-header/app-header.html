@@ -1,14 +1,18 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../user-controls/user-controls.html">
 
 <dom-module id="app-header">
   <style>
     :host {
+      background: #3B3D5F;
       display: block;
       height: 45px;
-      background: #3B3D5F;
+      position: relative;
     }
   </style>
-  <template></template>
+  <template>
+    <user-controls></user-controls>
+  </template>
   <script>
   (function() {
     Polymer({
