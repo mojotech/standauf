@@ -4,7 +4,7 @@
   <style>
     :host {
       border: 1px solid #e0e0e0;
-      border-left: none;
+      border-left: 4px solid transparent;
       border-top: none;
       display: block;
       overflow: auto;
@@ -16,7 +16,7 @@
       border-top: none;
     }
 
-    :host:nth-child(2), :host:hover {
+    :host.active, :host:hover {
       /* emulate selected */
       background: white;
       border-left-color: #2ebaee;
@@ -24,11 +24,6 @@
       border-left-width: 4px;
       border-right: none;
       cursor: pointer;
-    }
-
-    :host:nth-child(2) *, :host:hover * {
-      left: -4px;
-      position: relative;
     }
 
     img {

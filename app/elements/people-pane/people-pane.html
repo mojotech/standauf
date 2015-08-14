@@ -13,19 +13,32 @@
   </style>
   <template>
     <template is="dom-repeat" items="[[activeProjectPeople]]" as="person">
-      <person-summary on-click="activatePerson" person="[[person]]"></person-summary>
+      <person-summary class$="{{isActivePerson(index, activePerson)}}" on-click="activatePerson" person="[[person]]"></person-summary>
     </template>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'people-pane',
+      isActivePerson: function(idx, activeIndex) {
+        return idx === activeIndex ? 'active' : '';
+      },
       activatePerson: function(e) {
         page('/projects/' + app.params.project_id + '/people/' + e.model.person.id);
+        this.notifyPath('activePerson', this.getActivePerson(this.activeProjectPeople));
+      },
+      getActivePerson: function(people) {
+        var i = people.map(function(p) { return p.id; }).indexOf(app.params.person_id);
+
+        return i !== -1 ? i : 0;
       },
       properties: {
         activeProjectPeople: {
           type: Array,
+        },
+        activePerson: {
+          type: Number,
+          computed: 'getActivePerson(activeProjectPeople)'
         }
       }
     });
