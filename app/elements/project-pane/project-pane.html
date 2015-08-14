@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="compose-standup.html">
 
 <dom-module id="project-pane">
   <style>
@@ -48,6 +49,8 @@
     }
   </style>
   <template>
+    <compose-standup></compose-standup>
+
     <ul>
       <li>Projects</li>
       <template is="dom-repeat" items="{{projects}}">
