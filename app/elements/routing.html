@@ -11,6 +11,12 @@
 
     page('/projects/:project_id', function(ctx) {
       app.route = 'home';
+      app.params = ctx.params;
+    });
+
+    page('/projects/:project_id/people/:person_id', function(ctx) {
+      app.route = 'home';
+      app.params = ctx.params;
     });
 
     page({
