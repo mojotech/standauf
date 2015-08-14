@@ -28,29 +28,30 @@
     }
 
     li:before {
-      background-color: #2ebaee;
+      background: transparent;
       border-radius: 50%;
+      border: 2px solid #a1a7cb;
       content: "";
       display: block;
       float: left;
-      height: 9px;
+      height: 6px;
       margin-right: 13px;
       margin-top: 9px;
-      width: 9px;
+      width: 6px;
     }
 
-    li:nth-child(3):before {
-      height: 6px;
-      background: transparent;
-      border: 2px solid #a1a7cb;
-      width: 6px;
+    li.active:before {
+      background-color: #2ebaee;
+      border: none;
+      height: 9px;
+      width: 9px;
     }
   </style>
   <template>
     <ul>
       <li>Projects</li>
       <template is="dom-repeat" items="{{projects}}">
-        <li on-click="activateProject">[[item.name]]</li>
+      <li on-click="activateProject" class$="{{isActive(item.active)}}">[[item.name]]</li>
       </template>
     </ul>
   </template>
@@ -64,6 +65,9 @@
           p.active = (p.id === id);
           return p;
         });
+      },
+      isActive: function(active) {
+        return (active ? 'active' : '');
       },
       properties: {
         projects: {
