@@ -55,6 +55,7 @@
       <div class="content">
         <iron-pages attr-for-selected="data-route" selected="{{route}}">
           <section data-route="home">
+            <app-header></app-header>
             <project-list projects="{{projects}}"></project-list>
             <standup-panel projects="{{projects}}"></standup-panel>
           </section>
