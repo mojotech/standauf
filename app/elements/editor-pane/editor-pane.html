@@ -11,13 +11,16 @@
    }
   </style>
   <template>
+    <pre>[[standup.text]]</pre>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'editor-pane',
 
-      properties: {}
+      properties: {
+        standup: Object
+      }
     });
   })();
   </script>

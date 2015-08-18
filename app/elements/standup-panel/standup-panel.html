@@ -12,7 +12,7 @@
   <template>
     <project-pane projects="[[projects]]" panel-state="{{panelState}}"></project-pane>
     <standup-pane panel-state="{{panelState}}" standups="[[standups]]"></standup-pane>
-    <editor-pane></editor-pane>
+    <editor-pane standup="[[standup]]"></editor-pane>
   </template>
   <script>
   (function() {
@@ -21,7 +21,14 @@
       getProjectStandups: function(projects, activeProject) {
         return projects[activeProject].standups;
       },
+      getActiveStandup: function(projects, activeProject, activeStandup) {
+        return projects[activeProject].standups[activeStandup];
+      },
       properties: {
+        standup: {
+          type: Object,
+          computed: 'getActiveStandup(projects, panelState.activeProject, panelState.activeStandup)'
+        },
         standups: {
           type: Array,
           computed: 'getProjectStandups(projects, panelState.activeProject)'
