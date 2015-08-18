@@ -40,14 +40,17 @@
     <span>Hello, Jeff</span>
 
     <nav>
-      <a class="fa fa-cog settings"></a>
+      <a class="fa fa-cog settings" on-click="gotoAdmin"></a>
       <a class="fa fa-sign-out log-out"></a>
     </nav>
   </template>
   <script>
   (function() {
     Polymer({
-      is: 'user-controls'
+      is: 'user-controls',
+      gotoAdmin: function() {
+        page('/admin');
+      }
     });
   })();
   </script>

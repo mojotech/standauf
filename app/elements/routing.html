@@ -14,6 +14,10 @@
       app.route = 'login';
     });
 
+    page('/admin', persistRouteState, function(ctx) {
+      app.route = 'admin';
+    });
+
     page('/projects/:project_id', persistRouteState, function(ctx) {
       app.route = 'home';
     });
