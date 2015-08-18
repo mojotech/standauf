@@ -40,14 +40,14 @@
     <compose-standup></compose-standup>
     <ul class="projects">
       <li>Projects</li>
-      <template is="dom-repeat" items="{{projects}}">
-        <li on-click="activateProject" class$="{{isSelected(index, panelState.activeProject)}}">[[item.name]]</li>
+      <template is="dom-repeat" items="[[projects]]">
+        <li on-click="activateProject" class$="[[isSelected(index, panelState.activeProject)]]">[[item.name]]</li>
       </template>
     </ul>
 
     <ul class="team">
       <li>Team Members</li>
-      <template is="dom-repeat" items="{{activePeople}}">
+      <template is="dom-repeat" items="[[activePeople]]">
         <li>[[item.name]]</li>
       </template>
     </ul>

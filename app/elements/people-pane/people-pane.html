@@ -14,7 +14,7 @@
   </style>
   <template>
     <template is="dom-repeat" items="[[activeProjectPeople]]" as="person">
-      <person-summary class$="{{isActivePerson(index, panelState.activePerson)}}" on-click="activatePerson" person="[[person]]"></person-summary>
+      <person-summary class$="[[isActivePerson(index, panelState.activePerson)]]" on-click="activatePerson" person="[[person]]"></person-summary>
     </template>
   </template>
   <script>
