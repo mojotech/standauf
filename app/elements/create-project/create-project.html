@@ -1,19 +1,21 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<dom-module id="admin-panel">
+<dom-module id="create-project">
   <style>
     :host {
       display: block;
     }
   </style>
   <template>
-    <h1> hello admin </h1>
-    <create-project></create-project>
+    <h5> Create a new project </h5>
+    <label for="project-name">project name</label>
+    <input id="project-name">
+    <button on-click="add-project">Add new project</button>
   </template>
   <script>
   (function() {
     Polymer({
-      is: 'admin-panel'
+      is: 'create-project'
     });
   })();
   </script>
