@@ -1,24 +1,25 @@
 <script src="../../bower_components/page/page.js"></script>
 <script>
+  function persistRouteState(ctx, next) {
+    app.params = ctx.params;
+    next();
+  }
+
   window.addEventListener('DOMContentLoaded', function() {
-    page('/', function(ctx) {
+    page('/', persistRouteState, function(ctx) {
       app.route = 'home';
-      app.params = ctx.params;
     });
 
-    page('/login', function(ctx) {
+    page('/login', persistRouteState, function(ctx) {
       app.route = 'login';
-      app.params = ctx.params;
     });
 
-    page('/projects/:project_id', function(ctx) {
+    page('/projects/:project_id', persistRouteState, function(ctx) {
       app.route = 'home';
-      app.params = ctx.params;
     });
 
-    page('/projects/:project_id/standups/:standup_id', function(ctx) {
+    page('/projects/:project_id/standups/:standup_id', persistRouteState, function(ctx) {
       app.route = 'home';
-      app.params = ctx.params;
     });
 
     page({
