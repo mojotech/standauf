@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="standup-pane">
+  <style>
+    :host {
+      background-color: #f9f9f9;
+      border-top: 1px solid #e0e0e0;
+      display: block;
+      float: left;
+      width: 25%;
+      height: 100%;
+    }
+  </style>
+  <template>
+    <template is="dom-repeat" items="[[standups]]">
+      <standup-summary class$="[[isActiveStandup(index, panelState.activeStandup)]]" on-click="selectStandup" standup="[[item]]"></standup-summary>
+    </template>
+  </template>
+  <script>
+  (function() {
+    Polymer({
+      is: 'standup-pane',
+      isActiveStandup: function(idx, activeIndex) {
+        return idx === activeIndex ? 'active' : '';
+      },
+      selectStandup: function(e) {
+        page('/projects/' + app.params.project_id + '/standups/' + e.model.item.id);
+
+        this.panelState.activeStandup = e.model.index;
+        this.notifyPath('panelState.activeStandup', this.panelState.activeStandup);
+      },
+      properties: {
+        standups: {
+          type: Array,
+        },
+        panelState: {
+          type: Object,
+          notify: true
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>

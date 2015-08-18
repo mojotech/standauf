@@ -64,10 +64,10 @@
       activateProject: function(e) {
         var id = e.model.item.id;
         this.panelState.activeProject = e.model.index;
-        this.panelState.activePerson = 0;
+        this.panelState.activeStandup = 0;
 
         this.notifyPath('panelState.activeProject', this.panelState.activeProject);
-        this.notifyPath('panelState.activePerson', this.panelState.activePerson);
+        this.notifyPath('panelState.activeStandup', this.panelState.activePerson);
         page('/projects/' + id);
       },
       properties: {

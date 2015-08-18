@@ -11,27 +11,27 @@
   </style>
   <template>
     <project-pane projects="[[projects]]" panel-state="{{panelState}}"></project-pane>
-    <people-pane panel-state="{{panelState}}" active-project-people="[[activeProjectPeople]]"></people-pane>
+    <standup-pane panel-state="{{panelState}}" standups="[[standups]]"></standup-pane>
     <editor-pane></editor-pane>
   </template>
   <script>
   (function() {
     Polymer({
       is: 'standup-panel',
-      getActiveProjectPeople: function(projects, activeProject) {
-        return projects[activeProject].staff;
+      getProjectStandups: function(projects, activeProject) {
+        return projects[activeProject].standups;
       },
       properties: {
-        activeProjectPeople: {
+        standups: {
           type: Array,
-          computed: 'getActiveProjectPeople(projects, panelState.activeProject)'
+          computed: 'getProjectStandups(projects, panelState.activeProject)'
         },
         panelState: {
           type: Object,
           value: function() {
             return {
               activeProject: 0,
-              activePerson: 0
+              activeStandup: 0
             }
           }
         }

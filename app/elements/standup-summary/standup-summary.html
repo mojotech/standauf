@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<dom-module id="person-summary">
+<dom-module id="standup-summary">
   <style>
     :host {
       border: 1px solid #e0e0e0;
@@ -58,19 +58,19 @@
   </style>
   <template>
     <img src="{{gravatar(person.email)}}" />
-    <span class="name">{{person.name}}</span>
+    <span class="name">{{standup.id}}</span>
     <i class="temperature"></i>
     <span class="updated">{{person.updated}}</span>
   </template>
   <script>
   (function() {
     Polymer({
-      is: 'person-summary',
+      is: 'standup-summary',
       gravatar: function(v) {
         return 'http://www.gravatar.com/avatar/' + md5(v);
       },
       properties: {
-        person: Object
+        standup: Object
       }
     });
   })();
