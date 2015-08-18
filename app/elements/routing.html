@@ -6,23 +6,23 @@
   }
 
   window.addEventListener('DOMContentLoaded', function() {
-    page('/', persistRouteState, function(ctx) {
+    page('/', persistRouteState, function() {
       app.route = 'home';
     });
 
-    page('/login', persistRouteState, function(ctx) {
+    page('/login', persistRouteState, function() {
       app.route = 'login';
     });
 
-    page('/admin', persistRouteState, function(ctx) {
+    page('/admin', persistRouteState, function() {
       app.route = 'admin';
     });
 
-    page('/projects/:project_id', persistRouteState, function(ctx) {
+    page('/projects/:project_id', persistRouteState, function() {
       app.route = 'home';
     });
 
-    page('/projects/:project_id/standups/:standup_id', persistRouteState, function(ctx) {
+    page('/projects/:project_id/standups/:standup_id', persistRouteState, function() {
       app.route = 'home';
     });
 
