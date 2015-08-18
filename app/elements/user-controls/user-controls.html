@@ -36,7 +36,7 @@
 
   </style>
   <template>
-    <user-icon></user-icon>
+    <user-icon on-click="gotoStandups"></user-icon>
     <span>Hello, Jeff</span>
 
     <nav>
@@ -48,6 +48,9 @@
   (function() {
     Polymer({
       is: 'user-controls',
+      gotoStandups: function() {
+        page('/');
+      },
       gotoAdmin: function() {
         page('/admin');
       }
